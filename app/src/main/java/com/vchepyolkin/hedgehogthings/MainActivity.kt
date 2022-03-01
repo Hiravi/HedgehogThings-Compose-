@@ -7,6 +7,7 @@ import androidx.compose.animation.Crossfade
 
 import androidx.compose.runtime.*
 import androidx.navigation.compose.rememberNavController
+import com.vchepyolkin.hedgehogthings.ui.home.Home
 
 class MainActivity : ComponentActivity() {
 
@@ -14,23 +15,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-
+            Home()
         }
 
 
     }
 }
-
-@Composable
-fun OnlineDiary() {
-
-}
-
-@Composable
-fun OnlineAlbum() {
-
-}
-
 
 
 
