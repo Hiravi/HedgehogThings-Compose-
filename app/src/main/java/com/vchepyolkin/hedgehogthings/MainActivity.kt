@@ -2,12 +2,12 @@ package com.vchepyolkin.hedgehogthings
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.Crossfade
 
 
-import androidx.compose.runtime.*
-import androidx.navigation.compose.rememberNavController
+import com.vchepyolkin.hedgehogthings.navigation.NavComposeApp
+import com.vchepyolkin.hedgehogthings.ui.diary.Diary
 import com.vchepyolkin.hedgehogthings.ui.home.Home
+import com.vchepyolkin.hedgehogthings.ui.theme.HedgehogThingsTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -15,10 +15,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            Home()
+
+            HedgehogThingsTheme {
+                Diary()
+            }
         }
-
-
     }
 }
 

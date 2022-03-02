@@ -1,8 +1,7 @@
 package com.vchepyolkin.hedgehogthings.ui.home
 
-import android.content.res.Resources
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 
@@ -18,7 +17,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vchepyolkin.hedgehogthings.R
 
-
 @Preview
 @Composable
 fun Home() {
@@ -31,7 +29,7 @@ fun Home() {
             Button(
                 onClick = { /*TODO*/ },
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                modifier = Modifier.size(128.dp)
+                modifier = Modifier.size(128.dp).border(2.dp, Color.Black),
             ) {
 
                 Image(
@@ -44,7 +42,7 @@ fun Home() {
 
             Button(onClick = { /*TODO*/ },
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                modifier = Modifier.size(128.dp)
+                modifier = Modifier.size(128.dp).border(2.dp, Color.Black),
             ) {
 
                 Image(
