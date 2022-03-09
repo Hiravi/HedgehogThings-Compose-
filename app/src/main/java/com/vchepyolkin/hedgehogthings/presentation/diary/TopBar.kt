@@ -1,4 +1,4 @@
-package com.vchepyolkin.hedgehogthings.ui.diary
+package com.vchepyolkin.hedgehogthings.presentation.diary
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -9,15 +9,14 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.vchepyolkin.hedgehogthings.R
 
-@Preview
+
 @Composable
-fun TopBar() {
+fun TopBar(modifier: Modifier) {
     Surface(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         elevation = 8.dp,
         color = Color.White,
     ) {
