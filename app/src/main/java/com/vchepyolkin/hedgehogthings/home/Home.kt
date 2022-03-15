@@ -1,4 +1,4 @@
-package com.vchepyolkin.hedgehogthings.presentation.home
+package com.vchepyolkin.hedgehogthings.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border

@@ -1,4 +1,4 @@
-package com.vchepyolkin.hedgehogthings.presentation.diary
+package com.vchepyolkin.hedgehogthings.feature_category.presentation.categories
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*

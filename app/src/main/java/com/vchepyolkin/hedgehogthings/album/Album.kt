@@ -1,4 +1,4 @@
-package com.vchepyolkin.hedgehogthings.presentation.album
+package com.vchepyolkin.hedgehogthings.album
 
 import androidx.compose.runtime.Composable
 

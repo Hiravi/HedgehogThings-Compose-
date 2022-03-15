@@ -1,4 +1,4 @@
-package com.vchepyolkin.hedgehogthings.presentation.diary
+package com.vchepyolkin.hedgehogthings.feature_category.presentation.categories
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -15,14 +15,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.lifecycle.LiveData
 import com.vchepyolkin.hedgehogthings.R
-import com.vchepyolkin.hedgehogthings.models.Category
+import com.vchepyolkin.hedgehogthings.feature_category.domain.model.Category
 
 
 @Composable
 @ExperimentalFoundationApi
-fun Diary(categories: List<Category>) {
+fun CategoriesScreen(categories: List<Category>) {
     Surface(modifier = Modifier.fillMaxSize()) {
 
         ConstraintLayout {
@@ -30,16 +29,14 @@ fun Diary(categories: List<Category>) {
             val topBar = createRef()
             val grid = createRef()
 
-
             LazyVerticalGrid(
                 cells = GridCells.Fixed(2),
                 content = {
                     items(categories.size) { item ->
                         Card(
                             modifier = Modifier.fillMaxSize(),
-                            backgroundColor = categories[item].color
                         ) {
-                            Text(text = categories[item].name)
+                            Text(text = categories[item].title)
                         }
                     }
                 },
@@ -52,10 +49,12 @@ fun Diary(categories: List<Category>) {
                     },
             )
 
-            TopBar(modifier = Modifier.constrainAs(topBar) {
-                top.linkTo(parent.top)
+            TopBar(
+                modifier = Modifier.constrainAs(topBar) {
+                    top.linkTo(parent.top)
 
-            })
+                },
+            )
 
 
             FloatingActionButton(
@@ -64,12 +63,12 @@ fun Diary(categories: List<Category>) {
                 modifier = Modifier.constrainAs(addCategoryButton) {
                     bottom.linkTo(parent.bottom, margin = 48.dp)
                     end.linkTo(parent.end, margin = 24.dp)
-                }
+                },
             ) {
                 Image(
                     modifier = Modifier.size(48.dp),
                     painter = painterResource(R.drawable.ic_plus),
-                    contentDescription = "Add category button"
+                    contentDescription = "Add category button",
                 )
 
             }
