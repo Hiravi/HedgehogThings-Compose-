@@ -2,13 +2,13 @@ package com.vchepyolkin.hedgehogthings.di
 
 import android.app.Application
 import androidx.room.Room
-import com.vchepyolkin.hedgehogthings.feature_category.data.data_source.CategoryDatabase
-import com.vchepyolkin.hedgehogthings.feature_category.data.repository.CategoryRepositoryImpl
-import com.vchepyolkin.hedgehogthings.feature_category.domain.repository.CategoryRepository
-import com.vchepyolkin.hedgehogthings.feature_category.domain.use_case.AddCategory
-import com.vchepyolkin.hedgehogthings.feature_category.domain.use_case.CategoryUseCases
-import com.vchepyolkin.hedgehogthings.feature_category.domain.use_case.DeleteCategory
-import com.vchepyolkin.hedgehogthings.feature_category.domain.use_case.GetCategories
+import com.vchepyolkin.hedgehogthings.feature_note.data.data_source.CategoryDatabase
+import com.vchepyolkin.hedgehogthings.feature_note.data.repository.CategoryRepositoryImpl
+import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.repository.CategoryRepository
+import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.use_case.AddCategory
+import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.use_case.CategoryUseCases
+import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.use_case.DeleteCategory
+import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.use_case.GetCategories
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
