@@ -1,11 +1,8 @@
 package com.vchepyolkin.hedgehogthings.feature_note.presentation.categories.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -14,33 +11,39 @@ import com.vchepyolkin.hedgehogthings.R
 
 
 @Composable
-fun TopBar() {
-    Surface(
+fun TopBar(
+    title: String,
+    onBack: () -> Unit,
+) {
+    TopAppBar(
         modifier = Modifier.fillMaxWidth(),
         elevation = 8.dp,
-        color = Color.White,
+        backgroundColor = Color.White,
     ) {
-        Row(
 
+        IconButton(
+            onClick = onBack,
             modifier = Modifier
-                .height(50.dp)
-                .padding(start = 8.dp),
-            verticalAlignment = CenterVertically,
+                .padding(start = 10.dp)
+                .size(18.dp),
         ) {
-
-            Image(
+            Icon(
                 painter = painterResource(id = R.drawable.ic_back),
                 contentDescription = "Button back",
-                modifier = Modifier
-                    .padding(start = 10.dp)
-                    .size(18.dp)
             )
-
-            Spacer(modifier = Modifier.width(10.dp))
-            
-            Text(text = "Категории")
-
         }
+
+        Spacer(modifier = Modifier.width(10.dp))
+
+        Text(
+            text = title,
+            style = MaterialTheme.typography.h6
+        )
+
 
     }
 }
+
+
+    
+

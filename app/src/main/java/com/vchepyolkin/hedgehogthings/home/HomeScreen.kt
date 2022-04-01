@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.vchepyolkin.hedgehogthings.R
+import com.vchepyolkin.hedgehogthings.feature_note.presentation.categories.components.TopBar
 import com.vchepyolkin.hedgehogthings.util.Screen
 
 @Composable
@@ -32,7 +33,7 @@ fun HomeScreen(
         ) {
             Button(
                 onClick = {
-                          navController.navigate(Screen.CategoriesScreen.route)
+                    navController.navigate(Screen.CategoriesScreen.route)
                 },
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
                 modifier = Modifier.size(128.dp).border(2.dp, Color.Black),

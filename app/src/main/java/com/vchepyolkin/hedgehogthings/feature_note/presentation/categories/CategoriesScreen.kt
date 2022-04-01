@@ -30,7 +30,7 @@ import kotlinx.coroutines.launch
 fun CategoriesScreen(
     navController: NavController,
     viewModel: CategoriesViewModel = hiltViewModel()
-    ) {
+) {
     val state = viewModel.state.value
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
@@ -49,20 +49,24 @@ fun CategoriesScreen(
                 )
             }
         },
-        scaffoldState = scaffoldState
+        topBar = {
+            TopBar(
+                title = "Категории",
+                onBack = { navController.navigateUp() }
+            )
+        },
+        scaffoldState = scaffoldState,
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp),
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(text = "Your category", style = MaterialTheme.typography.h4)
 
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.CenterEnd
+            ) {
                 IconButton(
                     onClick = {
                         viewModel.onEvent(CategoriesEvent.ToggleOrderSection)
@@ -74,6 +78,7 @@ fun CategoriesScreen(
                     )
                 }
             }
+
             AnimatedVisibility(
                 visible = state.isOrderSectionVisible,
                 enter = fadeIn() + slideInVertically(),
