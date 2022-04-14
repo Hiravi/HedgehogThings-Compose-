@@ -39,7 +39,7 @@ fun CategoriesScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    TODO()
+                    navController.navigate(Screen.AddEditCategoryScreen.route)
                 },
                 backgroundColor = MaterialTheme.colors.primary,
             ) {
@@ -101,6 +101,7 @@ fun CategoriesScreen(
                 items(state.categories) { category ->
                     CategoryItem(
                         category = category,
+                        viewModel = viewModel,
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {

@@ -12,7 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.vchepyolkin.hedgehogthings.feature_note.presentation.categories.CategoriesScreen
-import com.vchepyolkin.hedgehogthings.feature_note.presentation.categories.add_edit_category.AddEditCategoryScreen
+import com.vchepyolkin.hedgehogthings.feature_note.presentation.add_edit_category.AddEditCategoryScreen
 import com.vchepyolkin.hedgehogthings.home.HomeScreen
 import com.vchepyolkin.hedgehogthings.ui.theme.HedgehogThingsTheme
 import com.vchepyolkin.hedgehogthings.util.Screen

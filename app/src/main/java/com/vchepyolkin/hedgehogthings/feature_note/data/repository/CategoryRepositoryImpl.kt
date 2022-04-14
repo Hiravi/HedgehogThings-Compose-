@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.Flow
 class CategoryRepositoryImpl(
     private val dao: CategoryDao
 ) : CategoryRepository {
+
     override fun getCategories(): Flow<List<Category>> {
         return dao.getCategories()
     }

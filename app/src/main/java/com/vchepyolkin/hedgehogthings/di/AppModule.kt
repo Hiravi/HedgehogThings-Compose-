@@ -5,10 +5,7 @@ import androidx.room.Room
 import com.vchepyolkin.hedgehogthings.feature_note.data.data_source.CategoryDatabase
 import com.vchepyolkin.hedgehogthings.feature_note.data.repository.CategoryRepositoryImpl
 import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.repository.CategoryRepository
-import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.use_case.AddCategory
-import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.use_case.CategoryUseCases
-import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.use_case.DeleteCategory
-import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.use_case.GetCategories
+import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.use_case.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,6 +39,7 @@ object AppModule {
             getCategories = GetCategories(repository),
             deleteCategory = DeleteCategory(repository),
             addCategory = AddCategory(repository),
+            getCategory = GetCategory(repository),
         )
     }
 }

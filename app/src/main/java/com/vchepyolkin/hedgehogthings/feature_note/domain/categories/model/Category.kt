@@ -14,7 +14,7 @@ import java.lang.Exception
 @Entity
 data class Category(
     @PrimaryKey val title: String,
-    var id: Int,
+    var id: Int?,
     var color: Int,
     @TypeConverters(CategoryTypeConverter::class)
     var type: CategoryType,

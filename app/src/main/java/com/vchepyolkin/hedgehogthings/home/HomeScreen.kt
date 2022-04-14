@@ -8,17 +8,15 @@ import androidx.compose.material.Button
 
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Scaffold
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.vchepyolkin.hedgehogthings.R
-import com.vchepyolkin.hedgehogthings.feature_note.presentation.categories.components.TopBar
 import com.vchepyolkin.hedgehogthings.util.Screen
 
 @Composable
@@ -26,6 +24,7 @@ fun HomeScreen(
     navController: NavController,
 ) {
     Scaffold() {
+
         Row(
             modifier = Modifier.fillMaxSize(),
             verticalAlignment = Alignment.CenterVertically,
@@ -36,7 +35,9 @@ fun HomeScreen(
                     navController.navigate(Screen.CategoriesScreen.route)
                 },
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                modifier = Modifier.size(128.dp).border(2.dp, Color.Black),
+                modifier = Modifier
+                    .size(128.dp)
+                    .border(2.dp, Color.Black),
                 shape = RoundedCornerShape(10.dp),
             ) {
 
@@ -48,9 +49,12 @@ fun HomeScreen(
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            Button(onClick = { /*TODO*/ },
+            Button(
+                onClick = {  },
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                modifier = Modifier.size(128.dp).border(2.dp, Color.Black),
+                modifier = Modifier
+                    .size(128.dp)
+                    .border(2.dp, Color.Black),
             ) {
 
                 Image(

@@ -1,15 +1,22 @@
 package com.vchepyolkin.hedgehogthings.feature_note.presentation.categories.components
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
+import androidx.compose.animation.Animatable
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.DropdownMenu
+import androidx.compose.material.DropdownMenuItem
 
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 
@@ -19,6 +26,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vchepyolkin.hedgehogthings.R
 import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.model.Category
+import com.vchepyolkin.hedgehogthings.feature_note.presentation.categories.CategoriesViewModel
+import kotlinx.coroutines.launch
 
 @Composable
 fun CategoryItem(
@@ -26,7 +35,15 @@ fun CategoryItem(
     category: Category,
     cornerRadius: Dp = 15.dp,
     onDeleteClick: () -> Unit,
+    viewModel: CategoriesViewModel
 ) {
+    val scope = rememberCoroutineScope()
+    val categoryBackgroundAnimatable = remember {
+        Animatable(
+            Color(if (category.color != -1) category.color else viewModel.categoryColor.value)
+        )
+    }
+
     Box(
         modifier = Modifier
             .fillMaxWidth(0.5f)
@@ -62,6 +79,50 @@ fun CategoryItem(
                             fontSize = 20.sp
                         )
                     )
+                }
+            }
+
+            var expanded by remember { mutableStateOf(false) }
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                DropdownMenuItem(onClick = {  }) {
+                    Card() {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center,
+                        ) {
+                            Category.categoryColors.forEach { color ->
+                                val colorInt = color.toArgb()
+                                Box(
+                                    modifier = Modifier
+                                        .size(25.dp)
+                                        .shadow(15.dp, CircleShape)
+                                        .clip(
+                                            CircleShape
+                                        )
+                                        .background(color)
+                                        .border(
+                                            width = 2.dp,
+                                            color = if (viewModel.categoryColor.value == colorInt) {
+                                                Color.Black
+                                            } else Color.Transparent
+                                        )
+                                        .clickable {
+                                            scope.launch {
+                                                categoryBackgroundAnimatable.animateTo(
+                                                    targetValue = Color(colorInt),
+                                                    animationSpec = tween(
+                                                        durationMillis = 500,
+                                                    )
+                                                )
+                                            }
+                                        }
+                                )
+                            }
+                        }
+                    }
                 }
             }
         }

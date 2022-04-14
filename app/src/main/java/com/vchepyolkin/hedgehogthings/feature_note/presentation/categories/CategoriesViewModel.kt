@@ -1,6 +1,7 @@
 package com.vchepyolkin.hedgehogthings.feature_note.presentation.categories
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.model.Category
@@ -26,6 +27,9 @@ class CategoriesViewModel @Inject constructor(
     private var recentlyDeletedCategory: Category? = null
 
     private var getCategoriesJob: Job? = null
+
+    private val _categoryColor = mutableStateOf(Category.categoryColors.random().toArgb())
+    val categoryColor = _categoryColor
 
     init {
         getCategories(CategoryOrder.Title(OrderType.Descending))
