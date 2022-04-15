@@ -41,7 +41,6 @@ class MainActivity : ComponentActivity() {
                         composable(
                             route = Screen.CategoriesScreen.route
                         ) {
-
                             CategoriesScreen(navController = navController)
                         }
 

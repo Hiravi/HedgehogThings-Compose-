@@ -29,6 +29,7 @@ import com.vchepyolkin.hedgehogthings.feature_note.domain.categories.model.Categ
 import com.vchepyolkin.hedgehogthings.feature_note.presentation.categories.CategoriesViewModel
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CategoryItem(
     modifier: Modifier = Modifier,
@@ -38,6 +39,7 @@ fun CategoryItem(
     viewModel: CategoriesViewModel
 ) {
     val scope = rememberCoroutineScope()
+    var expandedMenu by remember { mutableStateOf(false) }
     val categoryBackgroundAnimatable = remember {
         Animatable(
             Color(if (category.color != -1) category.color else viewModel.categoryColor.value)
@@ -45,23 +47,21 @@ fun CategoryItem(
     }
 
     Box(
-        modifier = Modifier
-            .fillMaxWidth(0.5f)
-            .padding(16.dp),
+        modifier = modifier
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .size(150.dp),
+                .size(250.dp),
             shape = RoundedCornerShape(cornerRadius),
             elevation = 5.dp,
-            border = BorderStroke(2.dp, Color.Black)
+            border = BorderStroke(2.dp, Color.Black),
         ) {
             Box(
                 contentAlignment = Alignment.Center,
             ) {
                 Image(
-                    modifier = Modifier.size(70.dp),
+                    modifier = Modifier.size(100.dp),
                     painter = painterResource(id = R.drawable.ic_note),
                     contentDescription = "Category ${category.title}",
                 )
@@ -82,10 +82,10 @@ fun CategoryItem(
                 }
             }
 
-            var expanded by remember { mutableStateOf(false) }
+
             DropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false }
+                expanded = expandedMenu,
+                onDismissRequest = { expandedMenu = false }
             ) {
                 DropdownMenuItem(onClick = {  }) {
                     Card() {
